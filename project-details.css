@@ -238,6 +238,7 @@ body {
     cursor: pointer;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .tab-item i {
@@ -389,22 +390,17 @@ body {
 }
 
 /* Technology Stack */
-.tech-stack-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+ .tech-stack-grid {
+    display: flex;
+    justify-content: space-between; /* Distributes space evenly between columns */
+    gap: 2rem; /* Adds consistent spacing between columns */
+    padding: 1rem 0; /* Ensures even padding around the entire grid */
 }
 
 .tech-column {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.tech-column h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
+    flex: 1; /* Makes each column grow to take up equal space */
+    padding: 0 1rem; /* Adds padding inside each column for consistent spacing */
 }
 
 .tech-column ul {
@@ -415,9 +411,16 @@ body {
 
 .tech-column li {
     display: flex;
-    align-items: center;
-    font-size: 1rem;
-    color: #4b5563;
+    align-items: center; /* Vertically aligns the icon and text */
+    gap: 0.5rem; /* Adds space between the icon and text */
+    margin-bottom: 0.5rem; /* Adds consistent vertical spacing between list items */
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+    .tech-stack-grid {
+        flex-direction: column; /* Stacks the columns vertically on smaller screens */
+    }
 }
 
 .tech-column li i {
@@ -491,6 +494,7 @@ body {
     align-items: center;
     margin-bottom: 1rem;
 }
+
 
 .milestone-item:last-child {
     margin-bottom: 0;
