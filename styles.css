@@ -1,0 +1,541 @@
+/* ========== Design Tokens ========== */
+:root {
+    /* Colors: 1 primary + 4 neutrals (exactly 5 total) */
+    --brand: #2563eb;
+    /* Primary */
+    --bg: #f1f5f9;
+    /* Neutral 1 */
+    --surface: #ffffff;
+    /* Neutral 2 */
+    --text: #0f172a;
+    /* Neutral 3 */
+    --muted: #475569;
+    /* Neutral 4 */
+
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+
+    /* Radius */
+    --radius-2: 10px;
+
+    /* Sizing */
+    --container: 1120px;
+}
+
+/* ========== Base ========== */
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.55;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/* ========== Layout ========== */
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+}
+
+.section {
+    padding-block: var(--space-10);
+}
+
+.section-tight {
+    padding-block: var(--space-6);
+}
+
+/* ========== Header ========== */
+.skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: -40px;
+    background: var(--brand);
+    color: #fff;
+    padding: var(--space-2) var(--space-4);
+    border-radius: 8px;
+}
+
+.skip-link:focus {
+    top: var(--space-4)
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--bg);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-weight: 700;
+}
+
+.brand-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--brand);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+}
+
+.nav a {
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--muted);
+}
+
+.nav a[aria-current="page"] {
+    color: var(--text);
+    background: var(--bg)
+}
+
+.nav a:hover {
+    color: var(--text)
+}
+
+/* ========== Footer ========== */
+.site-footer {
+    margin-top: var(--space-12);
+    background: var(--surface);
+    border-top: 1px solid var(--bg);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block: var(--space-6);
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ========== Components ========== */
+h1,
+h2,
+h3 {
+    letter-spacing: -0.01em
+}
+
+h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.2;
+    margin: 0 0 var(--space-3)
+}
+
+h2 {
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.25;
+    margin: 0 0 var(--space-3)
+}
+
+h3 {
+    font-size: clamp(18px, 2.4vw, 20px);
+    line-height: 1.3;
+    margin: 0 0 var(--space-2)
+}
+
+p {
+    margin: 0 0 var(--space-4);
+    color: var(--muted)
+}
+
+.lead {
+    font-size: clamp(16px, 2.2vw, 18px)
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn:hover {
+    filter: brightness(0.97)
+}
+
+.btn.secondary {
+    background: var(--surface);
+    border-color: var(--bg);
+    color: var(--text)
+}
+
+.btn.ghost {
+    background: transparent;
+    color: var(--text)
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--bg);
+    border-radius: var(--radius-2);
+    padding: var(--space-5);
+}
+
+.grid {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.grid-2 {
+    grid-template-columns: 1fr;
+}
+
+.grid-3 {
+    grid-template-columns: 1fr;
+}
+
+.grid-4 {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width:760px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
+/* Pill tabs (CSS-only for visual) */
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.pills a {
+    border: 1px solid var(--bg);
+    background: var(--surface);
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.pills a[aria-current="page"] {
+    color: var(--text);
+    background: var(--bg)
+}
+
+/* Table (simple) */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--bg);
+    text-align: left;
+}
+
+.table th {
+    color: var(--muted);
+    font-weight: 600
+}
+
+/* Progress (CSS only) */
+.progress {
+    height: 10px;
+    background: var(--bg);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress>span {
+    display: block;
+    height: 100%;
+    background: var(--brand);
+}
+
+/* List items */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 12px;
+    border: 1px solid var(--bg);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+/* Avatars (initials) */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--bg);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+/* Meta row */
+.meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Hero */
+.hero {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-12);
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap
+}
+
+/* Cards with title rows */
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4)
+}
+
+/* Rating stars (Unicode, no emoji) */
+.stars {
+    display: inline-flex;
+    gap: 2px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.star {
+    color: var(--bg)
+}
+
+.star.filled {
+    color: var(--brand)
+}
+
+/* Pills for status */
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* Forms */
+.form {
+    display: grid;
+    gap: var(--space-3);
+}
+
+label {
+    font-weight: 600;
+    color: var(--text)
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--bg);
+    background: var(--surface);
+    color: var(--text)
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical
+}
+
+/* Header utility right side */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2)
+}
+
+/* Section titles small description */
+.section-head {
+    margin-bottom: var(--space-5)
+}
+
+.section-head p {
+    margin: 0
+}
+
+/* Simple chip row */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2)
+}
+
+.chip {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600
+}
+
+/* Badge variants (still within color system) */
+.badge.blue {
+    background: var(--brand);
+    color: #fff
+}
+
+.badge.soft {
+    background: var(--bg);
+    color: var(--text)
+}
+
+/* Header auth buttons duplication safe */
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2)
+}
+
+/* Footer links */
+.footer-links {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap
+}
+
+/* Placeholder media blocks */
+.media {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg);
+    border: 1px dashed var(--bg);
+    border-radius: 12px;
+}
+
+/* Responsive helper for two-column forms/blocks */
+.auto-2 {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width:760px) {
+    .auto-2 {
+        grid-template-columns: 1fr 1fr
+    }
+}
