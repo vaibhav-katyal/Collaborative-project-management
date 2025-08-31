@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Nexus</a>
+            <div class="nav-links">
+                <a href="#">Features</a>
+                <a href="#">Community</a>
+                <a href="#">Pricing</a>
+                <a href="#">Contact</a>
+                <a href="#" class="btn-secondary">Sign In</a>
+                <a href="#" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Projects</h1>
+                <p>Discover, create, and collaborate on amazing projects.</p>
+            </div>
+            <a href="#" class="btn-primary">
+                <i class="fas fa-plus mr-2"></i> Create New Project
+            </a>
+        </header>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="toolbar-tabs">
+                <a href="#" class="tab active">All Projects (6)</a>
+                <a href="#" class="tab">My Projects (1)</a>
+                <a href="#" class="tab">Available (2)</a>
+                <a href="#" class="tab">Completed (1)</a>
+            </div>
+            <div class="toolbar-search">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search projects...">
+            </div>
+            <div class="toolbar-filter">
+                <select>
+                    <option>All Categories</option>
+                    <option>Design</option>
+                    <option>Development</option>
+                    <option>Analytics</option>
+                    <option>Marketing</option>
+                    <option>AI/ML</option>
+                    <option>Security</option>
+                </select>
+                <i class="fas fa-chevron-down select-arrow"></i>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project Card 1 (Example) -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <span class="project-card-status status-active">active</span>
+                    <span class="project-card-category">Design</span>
+                </div>
+                <h3>E-commerce Platform Redesign</h3>
+                <p>Complete overhaul of the user interface and user experience for our main e-commerce platform.</p>
+                <div class="project-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="project-card-info">
+                    <div><i class="fas fa-users"></i> 8 members</div>
+                    <div><i class="far fa-calendar-alt"></i> 2/15/2024</div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="project-meta">
+                        <span>UI/UX</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
+                    <a href="#" class="project-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 (Example) -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <span class="project-card-status status-active">active</span>
+                    <span class="project-card-category">Development</span>
+                </div>
+                <h3>Mobile App Development</h3>
+                <p>Native iOS and Android app development for customer engagement and loyalty program.</p>
+                <div class="project-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+                <div class="project-card-info">
+                    <div><i class="fas fa-users"></i> 6 members</div>
+                    <div><i class="far fa-calendar-alt"></i> 3/1/2024</div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="project-meta">
+                        <span>React Native</span>
+                        <span>Firebase</span>
+                        <span>API Integration</span>
+                    </div>
+                    <a href="#" class="project-details-btn">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Project Card 3 (Example) -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <span class="project-card-status status-active">active</span>
+                    <span class="project-card-category">Analytics</span>
+                </div>
+                <h3>Data Analytics Dashboard</h3>
+                <p>Real-time analytics dashboard for business intelligence and reporting.</p>
+                <div class="project-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="project-card-info">
+                    <div><i class="fas fa-users"></i> 5 members</div>
+                    <div><i class="far fa-calendar-alt"></i> 1/30/2024</div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="project-meta">
+                        <span>Python</span>
+                        <span>D3.js</span>
+                        <span>SQL</span>
+                    </div>
+                    <a href="#" class="project-details-btn">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Project Card 4 (Example - Completed) -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <span class="project-card-status status-completed">completed</span>
+                    <span class="project-card-category">Marketing</span>
+                </div>
+                <h3>Marketing Campaign Platform</h3>
+                <p>Automated marketing campaign management system with A/B testing capabilities.</p>
+                <div class="project-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="project-card-info">
+                    <div><i class="fas fa-users"></i> 7 members</div>
+                    <div><i class="far fa-calendar-alt"></i> 2/28/2024</div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="project-meta">
+                        <span>Marketing</span>
+                        <span>Analytics</span>
+                        <span>Content</span>
+                    </div>
+                    <a href="#" class="project-details-btn">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Project Card 5 (Example - Open) -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <span class="project-card-status status-active">Open to Join</span>
+                    <span class="project-card-category">AI/ML</span>
+                </div>
+                <h3>Customer Support Chatbot</h3>
+                <p>AI-powered chatbot for 24/7 customer support with natural language processing.</p>
+                <div class="project-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="project-card-info">
+                    <div><i class="fas fa-users"></i> 3 members</div>
+                    <div><i class="far fa-calendar-alt"></i> 4/1/2024</div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="project-meta">
+                        <span>Python</span>
+                        <span>AI/ML</span>
+                        <span>NLP</span>
+                    </div>
+                    <a href="#" class="project-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project Card 6 (Example - Open) -->
+            <div class="project-card">
+                <div class="project-card-header">
+                    <span class="project-card-status status-active">Open to Join</span>
+                    <span class="project-card-category">Security</span>
+                </div>
+                <h3>Security Audit & Enhancement</h3>
+                <p>Comprehensive security review and implementation of enhanced security measures.</p>
+                <div class="project-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div class="project-card-info">
+                    <div><i class="fas fa-users"></i> 2 members</div>
+                    <div><i class="far fa-calendar-alt"></i> 4/5/2024</div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="project-meta">
+                        <span>Security</span>
+                        <span>Penetration Testing</span>
+                        <span>Cloud Security</span>
+                    </div>
+                    <a href="#" class="project-details-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
