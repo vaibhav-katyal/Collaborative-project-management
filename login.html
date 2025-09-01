@@ -11,30 +11,42 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="text-center">
-            <h1 class="logo">Nexus</h1>
-            <p class="slogan">Collaborate. Lead. Succeed.</p>
+    <div class="login-container">
+        <!-- Login Form Panel -->
+        <div class="login-form-panel">
+            <div class="text-center">
+                <h2 class="form-title">Welcome Back</h2>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+            </form>
+
+            <p class="switch-page">
+                Don't have an account? <a href="signup.html">Sign up</a>
+            </p>
         </div>
         
-        <form>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <div class="forgot-password">
-                <a href="#">Forgot password?</a>
-            </div>
-            <button type="submit" class="btn-primary">Sign In</button>
-        </form>
-
-        <p class="switch-page">
-            Don't have an account? <a href="signup.html">Sign up</a>
-        </p>
+        <!-- Project Information Panel -->
+        <div class="project-info-panel">
+            <h1 class="project-title">Nexus</h1>
+            <p class="project-slogan">Collaborate. Lead. Succeed.</p>
+            <p class="project-description">
+                A powerful platform to streamline your team's workflow,
+                enhance collaboration, and drive project success.
+            </p>
+        </div>
     </div>
 
 </body>
