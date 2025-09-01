@@ -230,9 +230,7 @@ body {
     text-decoration: none;
 }
 
-/* =========================
-   RESPONSIVENESS
-   ========================= */
+
 @media (max-width: 1024px) {
     .about-hero {
         margin: 30px 20px;
