@@ -25,8 +25,12 @@ body {
     background-color: #1f2937;
     color: #f3f4f6;
     padding: 1.5rem 0;
-    border-bottom: 1px solid #374151;
-    position: relative;
+    /* Remove border-bottom to prevent white/gray line */
+    border-bottom: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 50;
 }
 
@@ -282,6 +286,14 @@ body {
 .footer-link:hover {
     color: #ffffff;
     text-decoration: none;
+}
+
+.navbar-spacer {
+    height: 80px; /* Match your navbar's actual height */
+    width: 100%;
+    background: transparent;
+    border: none;
+    display: block;
 }
 
 /* Responsive Breakpoints */

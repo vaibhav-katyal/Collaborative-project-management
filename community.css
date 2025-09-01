@@ -19,9 +19,20 @@ body {
     background-color: #1f2937;
     color: #f3f4f6;
     padding: 1.5rem 0;
-    border-bottom: 1px solid #374151;
-    position: relative;
+    
     z-index: 50;
+    border-bottom: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.navbar-spacer {
+    height: 80px; /* Match your navbar's actual height */
+    width: 100%;
+    background: transparent;
+    border: none;
+    display: block;
 }
 
 .navbar .nav-container {
@@ -408,5 +419,16 @@ body {
 @media (min-width: 1024px) {
     .projects-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 700px) {
+    .navbar-spacer {
+        height: 110px; /* Increase if navbar stacks and gets taller on mobile */
+    }
+}
+
+@media (max-width: 557px) {
+    .navbar-spacer {
+        height: 130px; /* Further increase for very small screens if needed */
     }
 }
