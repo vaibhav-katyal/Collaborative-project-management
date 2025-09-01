@@ -6,7 +6,7 @@
     <title>Nexus - Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="user-profile.css">
 </head>
 <body>
@@ -22,86 +22,99 @@
                         <a href="login.html" class="btn-secondary">Sign In</a>
                         <a href="projects.html" class="btn-primary">Get Started</a>
                     </div>
-
                 </div>
             </div>
         </nav>
-          <div class="navbar-spacer"></div>
+        <div class="navbar-spacer"></div>
     </header>
 
     <div class="container main-content">
-        <div class="profile-container">
-            <!-- Left Column: Profile Info -->
-            <div class="profile-info">
-                <img src="https://placehold.co/150x150/d1d5db/ffffff?text=User" alt="Profile Picture" class="profile-pic">
-                <h2>Jane Doe</h2>
-                <p>Project Leader</p>
-                <p>New York, USA</p>
-
-                <!-- Skills & Expertise Section moved here -->
-                <div class="skills-list-box">
-                    <h3>Skills & Expertise</h3>
-                    <div class="skills-list">
-                        <span class="skill-chip">Project Management</span>
-                        <span class="skill-chip">Team Leadership</span>
-                        <span class="skill-chip">Agile Methodologies</span>
-                        <span class="skill-chip">UI/UX Collaboration</span>
-                        <span class="skill-chip">Communication</span>
-                        <span class="skill-chip">Problem Solving</span>
+        <div class="profile-header-section">
+            <div class="profile-header-info">
+                <img src="https://placehold.co/200x200/4f46e5/ffffff?text=JD" alt="Profile Picture" class="profile-pic">
+                <div class="profile-text">
+                    <h1>Jane Doe</h1>
+                    <p class="profile-title">Project Leader</p>
+                    <p class="profile-location">New York, USA</p>
+                </div>
+            </div>
+            <button class="btn-edit-profile">Edit Profile</button>
+        </div>
+        
+        <div class="profile-main-grid">
+            <div class="left-column">
+                <div class="section-container">
+                    <h2>Skills & Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-chip">Project Management</div>
+                        <div class="skill-chip">Team Leadership</div>
+                        <div class="skill-chip">Agile Methodologies</div>
+                        <div class="skill-chip">UI/UX Collaboration</div>
+                        <div class="skill-chip">Communication</div>
+                        <div class="skill-chip">Problem Solving</div>
                     </div>
+                </div>
+
+                <div class="section-container">
+                    <h2>Recent Activity</h2>
+                    <ul class="activity-list">
+                        <li>
+                            <div class="activity-dot"></div>
+                            <div class="activity-content">
+                                <p>Led the launch of "Nexus 2.0" project</p>
+                                <span class="activity-date">2 days ago</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="activity-dot"></div>
+                            <div class="activity-content">
+                                <p>Collaborated with UI team on dashboard redesign</p>
+                                <span class="activity-date">5 days ago</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="activity-dot"></div>
+                            <div class="activity-content">
+                                <p>Earned "Top Contributor" badge</p>
+                                <span class="activity-date">1 week ago</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Right Column: Points and Badges -->
-            <div class="profile-details">
-                <h3>Points</h3>
-                <div class="points-grid">
-                    <div class="point-card">
-                        <h4>Teamwork Points</h4>
-                        <p>1,250</p>
+            <div class="right-column">
+                <div class="section-container">
+                    <h2>Points & Badges</h2>
+                    <div class="points-grid">
+                        <div class="point-card">
+                            <h3>Teamwork Points</h3>
+                            <p class="point-value">1,250</p>
+                        </div>
+                        <div class="point-card">
+                            <h3>Leadership Points</h3>
+                            <p class="point-value">780</p>
+                        </div>
                     </div>
-                    <div class="point-card">
-                        <h4>Leadership Points</h4>
-                        <p>780</p>
+                    <div class="badges-grid">
+                        <div class="badge-card">
+                            <span class="emoji">🏆</span>
+                            <p>Team Player</p>
+                        </div>
+                        <div class="badge-card">
+                            <span class="emoji">🚀</span>
+                            <p>Project Leader</p>
+                        </div>
+                        <div class="badge-card">
+                            <span class="emoji">🎯</span>
+                            <p>Project Launched</p>
+                        </div>
+                        <div class="badge-card">
+                            <span class="emoji">⭐</span>
+                            <p>Top Contributor</p>
+                        </div>
                     </div>
                 </div>
-
-                <h3>Badges</h3>
-                <div class="badges-grid">
-                    <div class="badge-card">
-                        <span class="emoji">🤝</span>
-                        <p>Team Player</p>
-                    </div>
-                    <div class="badge-card">
-                        <span class="emoji">👑</span>
-                        <p>Project Leader</p>
-                    </div>
-                    <div class="badge-card">
-                        <span class="emoji">🚀</span>
-                        <p>Project Launched</p>
-                    </div>
-                    <div class="badge-card">
-                        <span class="emoji">🏆</span>
-                        <p>Top Contributor</p>
-                    </div>
-                </div>
-
-                <!-- Recent Activity Section -->
-                <h3>Recent Activity</h3>
-                <ul class="activity-list">
-                    <li>
-                        <span class="activity-dot"></span>
-                        Led the launch of "Nexus 2.0" project <span class="activity-date">2 days ago</span>
-                    </li>
-                    <li>
-                        <span class="activity-dot"></span>
-                        Collaborated with UI team on dashboard redesign <span class="activity-date">5 days ago</span>
-                    </li>
-                    <li>
-                        <span class="activity-dot"></span>
-                        Earned "Top Contributor" badge <span class="activity-date">1 week ago</span>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
