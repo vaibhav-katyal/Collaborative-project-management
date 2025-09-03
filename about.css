@@ -207,29 +207,6 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
-/* Footer */
-.footer {
-    background-color: #111827;
-    color: #9ca3af;
-    padding: 3rem 1.5rem;
-    text-align: center;
-}
-.footer .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0;
-}
-.footer-link {
-    color: #6c63ff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-.footer-link:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
-
 
 @media (max-width: 1024px) {
     .about-hero {

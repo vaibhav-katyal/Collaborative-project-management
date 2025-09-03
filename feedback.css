@@ -8,9 +8,10 @@
 
 body {
     min-height: 100vh;
-    display: flex;
+    /* Remove flexbox layout */
+    /* display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; */
     background: linear-gradient(135deg, #6366f1, #8b5cf6, #3b82f6);
     padding: 120px 20px 20px;  /* top padding for navbar height */
 }
@@ -101,6 +102,8 @@ body {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    margin: 0 auto; /* horizontally center */
+    margin-top: 40px; /* add some space below navbar */
 }
 
 .form-container h2 {
