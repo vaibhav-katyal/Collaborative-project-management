@@ -96,6 +96,9 @@ body {
     cursor: pointer;
     border: none;
 }
+.btn-primary i {
+    margin-right: 0.5rem;
+}
 
 .btn-primary:hover {
     opacity: 0.9;
@@ -357,7 +360,7 @@ body {
     align-items: center;
 }
 
-.social-stat .emoji {
+.social-stat i {
     margin-right: 0.5rem;
 }
 

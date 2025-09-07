@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HiveMind - Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Professional User Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="user-profile.css">
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="footer.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -29,99 +30,251 @@
         <div class="navbar-spacer"></div>
     </header>
 
-    <div class="container main-content">
-        <div class="profile-header-section">
-            <div class="profile-header-info">
-                <img src="https://placehold.co/200x200/4f46e5/ffffff?text=JD" alt="Profile Picture" class="profile-pic">
-                <div class="profile-text">
-                    <h1>Jane Doe</h1>
-                    <p class="profile-title">Project Leader</p>
-                    <p class="profile-location">New York, USA</p>
-                </div>
-            </div>
-            <button class="btn-edit-profile">Edit Profile</button>
-        </div>
-        
-        <div class="profile-main-grid">
-            <div class="left-column">
-                <div class="section-container">
-                    <h2>Skills & Expertise</h2>
-                    <div class="skills-grid">
-                        <div class="skill-chip">Project Management</div>
-                        <div class="skill-chip">Team Leadership</div>
-                        <div class="skill-chip">Agile Methodologies</div>
-                        <div class="skill-chip">UI/UX Collaboration</div>
-                        <div class="skill-chip">Communication</div>
-                        <div class="skill-chip">Problem Solving</div>
-                    </div>
-                </div>
+    <div class="main-container">
 
-                <div class="section-container">
-                    <h2>Recent Activity</h2>
-                    <ul class="activity-list">
-                        <li>
-                            <div class="activity-dot"></div>
-                            <div class="activity-content">
-                                <p>Led the launch of "HiveMind 2.0" project</p>
-                                <span class="activity-date">2 days ago</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="activity-dot"></div>
-                            <div class="activity-content">
-                                <p>Collaborated with UI team on dashboard redesign</p>
-                                <span class="activity-date">5 days ago</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="activity-dot"></div>
-                            <div class="activity-content">
-                                <p>Earned "Top Contributor" badge</p>
-                                <span class="activity-date">1 week ago</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="right-column">
-                <div class="section-container">
-                    <h2>Points & Badges</h2>
-                    <div class="points-grid">
-                        <div class="point-card">
-                            <h3>Teamwork Points</h3>
-                            <p class="point-value">1,250</p>
-                        </div>
-                        <div class="point-card">
-                            <h3>Leadership Points</h3>
-                            <p class="point-value">780</p>
-                        </div>
-                    </div>
-                    <div class="badges-grid">
-                        <div class="badge-card">
-                            <span class="emoji">🏆</span>
-                            <p>Team Player</p>
-                        </div>
-                        <div class="badge-card">
-                            <span class="emoji">🚀</span>
-                            <p>Project Leader</p>
-                        </div>
-                        <div class="badge-card">
-                            <span class="emoji">🎯</span>
-                            <p>Project Launched</p>
-                        </div>
-                        <div class="badge-card">
-                            <span class="emoji">⭐</span>
-                            <p>Top Contributor</p>
-                        </div>
+        <!-- Profile Header Section -->
+        <div class="section-card">
+            <div class="profile-header">
+                <img src="https://placehold.co/96x96/6c63ff/FFFFFF?text=VK" alt="Profile Picture"
+                    class="profile-picture">
+                <div class="profile-info">
+                    <h1 class="profile-name">Vaibhav Katyal</h1>
+                    <p class="profile-role">Senior Project Manager & Team Lead</p>
+                    <div class="contact-info">
+                        <span class="contact-item">
+                            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                            alexander.thompson@company.com
+                        </span>
+                        <span class="contact-item">
+                            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06L5.16 10.65a11.037 11.037 0 006.105 6.105l1.06-.54a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2c-5.523 0-10-4.477-10-10V3z" />
+                            </svg>
+                            +1 (555) 123-4567
+                        </span>
+                        <span class="contact-item">
+                            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            New York, NY
+                        </span>
+                        <span class="contact-item">
+                            <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Joined March 2020
+                        </span>
                     </div>
                 </div>
+                <button class="edit-button">Edit Profile</button>
             </div>
         </div>
+
+        <!-- Leadership and Teamwork Sections -->
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <svg class="leadership-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M21.98 12.01c-.134-2.22-1.928-4-4.148-4.004-1.996.002-3.71.933-4.922 2.375C11.518 9.07 9.79 8.006 7.8 8c-2.22 0-4.014 1.782-4.148 4.004-.002.09-.002.174 0 .265h-.002c0 .088 0 .178.002.268C3.784 14.755 5.568 16 7.8 16c1.994 0 3.71-.933 4.922-2.375C14.482 15.068 16.208 16 18.2 16c2.222 0 4.016-1.782 4.15-4.004.002-.09.002-.174 0-.265h.002c0-.088 0-.178-.002-.268zM18.2 14c-1.106 0-2-.894-2-2s.894-2 2-2 2 .894 2 2-.894 2-2 2zM7.8 14c-1.106 0-2-.894-2-2s.894-2 2-2 2 .894 2 2-.894 2-2 2z" />
+                    </svg>
+                    <span class="achievement-title">Leadership</span>
+                </div>
+                <div class="achievement-points">2,847 Points</div>
+                <div class="progress-label">Level 8 Progress<span>78%</span></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar leadership-progress" style="width: 78%;"></div>
+                </div>
+                <div class="achievement-badges">
+                    <div class="achievement-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2l3.09 6.36L22 9.27l-5 4.87 1.18 6.88L12 18.06l-6.18 3.25L7 14.14l-5-4.87 8.91-1.28L12 2z" />
+                        </svg>
+                    </div>
+                    <div class="achievement-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-5 6h10c1.1 0 2-.9 2-2s-.9-2-2-2H7c-1.1 0-2 .9-2 2s.9 2 2 2z" />
+                        </svg>
+                    </div>
+                    <div class="achievement-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-2.828-10.828l-1.414 1.414 4.242 4.242 6.364-6.364-1.414-1.414-4.95 4.95-2.828-2.828z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card teamwork">
+                <div class="achievement-header">
+                    <svg class="teamwork-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 11c1.66 0 2.99-1.34 2.99-3S13.66 5 12 5 9 6.34 9 8s1.34 3 3 3zm0 2c-2.75 0-8 1.34-8 4v3h16v-3c0-2.66-5.25-4-8-4z" />
+                    </svg>
+                    <span class="achievement-title">Teamwork</span>
+                </div>
+                <div class="achievement-points">3,156 Points</div>
+                <div class="progress-label">Level 9 Progress<span>92%</span></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar teamwork-progress" style="width: 92%;"></div>
+                </div>
+                <div class="achievement-badges">
+                    <div class="achievement-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M21.98 12.01c-.134-2.22-1.928-4-4.148-4.004-1.996.002-3.71.933-4.922 2.375C11.518 9.07 9.79 8.006 7.8 8c-2.22 0-4.014 1.782-4.148 4.004-.002.09-.002.174 0 .265h-.002c0 .088 0 .178.002.268C3.784 14.755 5.568 16 7.8 16c1.994 0 3.71-.933 4.922-2.375C14.482 15.068 16.208 16 18.2 16c2.222 0 4.016-1.782 4.15-4.004.002-.09.002-.174 0-.265h.002c0-.088 0-.178-.002-.268zM18.2 14c-1.106 0-2-.894-2-2s.894-2 2-2 2 .894 2 2-.894 2-2 2zM7.8 14c-1.106 0-2-.894-2-2s.894-2 2-2 2 .894 2 2-.894 2-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="achievement-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M10 20.485c-.93 0-1.77-.38-2.384-1.01-.613-.63-1.026-1.503-1.026-2.583V14h-2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h3c.552 0 1 .448 1 1v1c0 1.1.9 2 2 2s2-.9 2-2v-1c0-.552.448-1 1-1h3c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-2v2.923c0 1.08-.413 1.953-1.026 2.583-.614.63-1.454 1.01-2.384 1.01zM14 14h-4c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-1c0-1.1-.9-2-2-2z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Stats Section -->
+        <div class="stat-cards-grid">
+            <div class="stat-card">
+                <div class="stat-value">47</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">312</div>
+                <div class="stat-label">Tasks Delivered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">98.5%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+
+        <!-- Current Projects Section -->
+        <div class="section-card">
+            <h3 class="section-title">Current Projects</h3>
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Digital Marketing Platform</span>
+                    <span class="project-status status-ontrack">On Track</span>
+                </div>
+                <div class="project-meta">Role: Project Lead | Due: Dec 15, 2024</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar teamwork-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Customer Analytics Dashboard</span>
+                    <span class="project-status status-inprogress">In Progress</span>
+                </div>
+                <div class="project-meta">Role: Senior Developer | Due: Jan 20, 2025</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar teamwork-progress" style="width: 62%;"></div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Mobile App Redesign</span>
+                    <span class="project-status status-nearcompletion">Near Completion</span>
+                </div>
+                <div class="project-meta">Role: Design Lead | Due: Nov 30, 2024</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar teamwork-progress" style="width: 94%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Tasks Section -->
+        <div class="section-card">
+            <h3 class="section-title">Recent Tasks</h3>
+            <table class="task-table">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Priority</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>API Integration Testing</td>
+                        <td><span class="priority-badge priority-high">High</span></td>
+                        <td>Nov 25</td>
+                        <td><span class="task-status-badge status-inprogress-task">In Progress</span></td>
+                        <td>
+                            <div class="task-progress-bar-container">
+                                <div class="task-progress-bar" style="width: 75%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Database Optimization</td>
+                        <td><span class="priority-badge priority-medium">Medium</span></td>
+                        <td>Nov 28</td>
+                        <td><span class="task-status-badge status-pending-task">Pending</span></td>
+                        <td>
+                            <div class="task-progress-bar-container">
+                                <div class="task-progress-bar" style="width: 0%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>User Interface Review</td>
+                        <td><span class="priority-badge priority-high">High</span></td>
+                        <td>Nov 22</td>
+                        <td><span class="task-status-badge status-completed-task">Completed</span></td>
+                        <td>
+                            <div class="task-progress-bar-container">
+                                <div class="task-progress-bar" style="width: 100%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Security Audit Report</td>
+                        <td><span class="priority-badge priority-critical">Critical</span></td>
+                        <td>Nov 20</td>
+                        <td><span class="task-status-badge status-inprogress-task">In Progress</span></td>
+                        <td>
+                            <div class="task-progress-bar-container">
+                                <div class="task-progress-bar" style="width: 90%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Performance Monitoring</td>
+                        <td><span class="priority-badge priority-low">Low</span></td>
+                        <td>Dec 05</td>
+                        <td><span class="task-status-badge status-pending-task">Pending</span></td>
+                        <td>
+                            <div class="task-progress-bar-container">
+                                <div class="task-progress-bar" style="width: 25%;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
-</body>
 
-<footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand">
@@ -180,5 +333,7 @@
             </div>
         </div>
     </footer>
+
+</body>
 
 </html>
