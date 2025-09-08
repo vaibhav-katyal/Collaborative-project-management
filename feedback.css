@@ -8,12 +8,10 @@
 
 body {
     min-height: 100vh;
-    /* Remove flexbox layout */
-    /* display: flex;
-    justify-content: center;
-    align-items: flex-start; */
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(135deg, #6366f1, #8b5cf6, #3b82f6);
-    padding: 120px 20px 20px;  /* top padding for navbar height */
+    /* padding: 120px 20px 20px; - Removed unnecessary padding */
 }
 
 /* Navbar */
@@ -95,6 +93,15 @@ body {
     transform: translateY(-2px);
 }
 
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
 .form-container {
     background: #fff;
     max-width: 500px;
@@ -102,8 +109,6 @@ body {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    margin: 0 auto; /* horizontally center */
-    margin-top: 40px; /* add some space below navbar */
 }
 
 .form-container h2 {
@@ -199,13 +204,13 @@ button:hover {
 
 /* Adjust body padding for smaller screens */
 @media (max-width: 700px) {
-    body {
+    main {
         padding-top: 160px;
     }
 }
 
 @media (max-width: 500px) {
-    body {
+    main {
         padding-top: 180px;
     }
 }
