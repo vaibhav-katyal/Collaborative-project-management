@@ -1,3 +1,28 @@
+That's an excellent feature request! I'll implement the "Create New Project" flow using plain JavaScript and localStorage for persistence.
+
+I will introduce a new HTML structure for the modal directly into projects.html and implement the necessary JavaScript functions to:
+
+Check for login status and set the project creator as the default team leader.
+
+Display the Project Creation Modal.
+
+Store the new project in localStorage.
+
+Dynamically render the project cards from localStorage data, removing the existing mock projects.
+
+Handle click on a project card to save the Project ID to sessionStorage and redirect to project-details.html.
+
+Update project-details.html to load and display the corresponding project's data.
+
+I will ensure no external CSS files are modified and your existing HTML structure is respected.
+
+Here are the updated files:
+
+1. Projects Page: projects.html (with Project Creation & Rendering Logic)
+I've added the Modal HTML at the end of the <body> and a comprehensive JavaScript block to handle project data and rendering.
+
+Code snippet
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +36,113 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="projects.css">
     <link rel="stylesheet" href="footer.css">
+    <style>
+        /* ADDED: Minimal CSS for the modal overlay and structure (assuming projects.css doesn't define these) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #6c63ff;
+            font-size: 1.8rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .modal-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .modal-form-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-top: 4px;
+        }
+        
+        .team-members-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .team-member-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .remove-member-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .modal-form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* CSS to make dynamically created cards clickable */
+        .project-card.clickable {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .project-card.clickable:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
@@ -22,8 +154,8 @@
                     <a href="index.html">Home</a>
                     <a href="projects.html">Projects</a>
                     <a href="community.html">Community</a>
-                    <div class="nav-btns">
-                        <a href="login.html" class="btn-secondary">Sign In</a>
+                    <div class="nav-btns" id="nav-buttons">
+                        <a href="login.html" class="btn-secondary" id="sign-in-link">Sign In</a>
                         <a href="projects.html" class="btn-primary">Get Started</a>
                     </div>
 
@@ -34,24 +166,22 @@
     </header>
 
     <div class="container main-content">
-        <!-- Header Section -->
         <header class="header">
             <div class="header-left">
                 <h1>Projects</h1>
                 <p>Discover, create, and collaborate on amazing projects.</p>
             </div>
-            <a href="#" class="btn-primary">
+            <a href="#" class="btn-primary" id="create-project-btn">
                 <i class="fas fa-plus mr-2"></i> Create New Project
             </a>
         </header>
 
-        <!-- Toolbar -->
         <div class="toolbar">
             <div class="toolbar-tabs">
-                <a href="#" class="tab active" style="text-decoration-line: none;">All Projects (6)</a>
-                <a href="#" class="tab" style="text-decoration-line: none;">My Projects (1)</a>
-                <a href="#" class="tab" style="text-decoration-line: none;">Available (2)</a>
-                <a href="#" class="tab" style="text-decoration-line: none;">Completed (1)</a>
+                <a href="#" class="tab active" style="text-decoration-line: none;">All Projects (<span id="total-projects-count">0</span>)</a>
+                <a href="#" class="tab" style="text-decoration-line: none;">My Projects (<span id="my-projects-count">0</span>)</a>
+                <a href="#" class="tab" style="text-decoration-line: none;">Available (<span id="available-projects-count">0</span>)</a>
+                <a href="#" class="tab" style="text-decoration-line: none;">Completed (<span id="completed-projects-count">0</span>)</a>
             </div>
             <div class="toolbar-controls">
                 <div class="toolbar-search">
@@ -73,172 +203,100 @@
             </div>
         </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <!-- Project Card 1 (Example) -->
-            <div class="project-card">
-                <div class="project-card-header">
-                    <span class="project-card-status status-active">active</span>
-                    <span class="project-card-category">Design</span>
-                </div>
-                <h3>E-commerce Platform Redesign</h3>
-                <p>Complete overhaul of the user interface and user experience for our main e-commerce platform.</p>
-                <div class="project-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%;"></div>
-                    </div>
-                </div>
-                <div class="project-card-info">
-                    <div><i class="fas fa-users"></i> 8 members</div>
-                    <div><i class="far fa-calendar-alt"></i> 2/15/2024</div>
-                </div>
-                <div class="project-card-footer">
-                    <div class="project-meta">
-                        <span>UI/UX</span>
-                        <span>React</span>
-                        <span>Node.js</span>
-                    </div>
-                    <a href="project-details.html" class="project-details-btn">View Details</a>
-                </div>
+        <div class="projects-grid" id="projects-grid">
             </div>
+    </div>
+    
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close-btn">&times;</span>
+            <h2 id="modal-title">Create New Project</h2>
+            <form id="project-form">
+                <div class="modal-form-grid">
+                    
+                    <div class="form-group">
+                        <label for="projectName">Project Name*</label>
+                        <input type="text" id="projectName" required>
+                    </div>
 
-            <!-- Project Card 2 (Example) -->
-            <div class="project-card">
-                <div class="project-card-header">
-                    <span class="project-card-status status-active">active</span>
-                    <span class="project-card-category">Development</span>
-                </div>
-                <h3>Mobile App Development</h3>
-                <p>Native iOS and Android app development for customer engagement and loyalty program.</p>
-                <div class="project-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 45%;"></div>
+                    <div class="form-group">
+                        <label for="projectCategory">Category*</label>
+                        <select id="projectCategory" required>
+                            <option value="Design">Design</option>
+                            <option value="Development">Development</option>
+                            <option value="Analytics">Analytics</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="AI/ML">AI/ML</option>
+                            <option value="Security">Security</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
-                </div>
-                <div class="project-card-info">
-                    <div><i class="fas fa-users"></i> 6 members</div>
-                    <div><i class="far fa-calendar-alt"></i> 3/1/2024</div>
-                </div>
-                <div class="project-card-footer">
-                    <div class="project-meta">
-                        <span>React Native</span>
-                        <span>Firebase</span>
-                        <span>API Integration</span>
-                    </div>
-                    <a href="project-details.html" class="project-details-btn">View Details</a>
-                </div>
-            </div>
 
-            <!-- Project Card 3 (Example) -->
-            <div class="project-card">
-                <div class="project-card-header">
-                    <span class="project-card-status status-active">active</span>
-                    <span class="project-card-category">Analytics</span>
-                </div>
-                <h3>Data Analytics Dashboard</h3>
-                <p>Real-time analytics dashboard for business intelligence and reporting.</p>
-                <div class="project-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%;"></div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date*</label>
+                        <input type="date" id="startDate" required>
                     </div>
-                </div>
-                <div class="project-card-info">
-                    <div><i class="fas fa-users"></i> 5 members</div>
-                    <div><i class="far fa-calendar-alt"></i> 1/30/2024</div>
-                </div>
-                <div class="project-card-footer">
-                    <div class="project-meta">
-                        <span>Python</span>
-                        <span>D3.js</span>
-                        <span>SQL</span>
-                    </div>
-                    <a href="project-details.html" class="project-details-btn">View Details</a>
-                </div>
-            </div>
 
-            <!-- Project Card 4 (Example - Completed) -->
-            <div class="project-card">
-                <div class="project-card-header">
-                    <span class="project-card-status status-completed">completed</span>
-                    <span class="project-card-category">Marketing</span>
-                </div>
-                <h3>Marketing Campaign Platform</h3>
-                <p>Automated marketing campaign management system with A/B testing capabilities.</p>
-                <div class="project-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 100%;"></div>
+                    <div class="form-group">
+                        <label for="expectedEndDate">Expected End Date*</label>
+                        <input type="date" id="expectedEndDate" required>
                     </div>
-                </div>
-                <div class="project-card-info">
-                    <div><i class="fas fa-users"></i> 7 members</div>
-                    <div><i class="far fa-calendar-alt"></i> 2/28/2024</div>
-                </div>
-                <div class="project-card-footer">
-                    <div class="project-meta">
-                        <span>Marketing</span>
-                        <span>Analytics</span>
-                        <span>Content</span>
+                    
+                    <div class="form-group full-width">
+                        <label for="projectDescription">Project Description*</label>
+                        <textarea id="projectDescription" rows="3" required></textarea>
                     </div>
-                    <a href="#" class="project-details-btn">View Details</a>
-                </div>
-            </div>
+                    
+                    <div class="form-group">
+                        <label for="gitHubLink">GitHub Repository Link</label>
+                        <input type="url" id="gitHubLink" placeholder="https://github.com/project-repo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="techStack">Key Tech Stack (comma separated)</label>
+                        <input type="text" id="techStack" placeholder="React, Node.js, MongoDB">
+                    </div>
 
-            <!-- Project Card 5 (Example - Open) -->
-            <div class="project-card">
-                <div class="project-card-header">
-                    <span class="project-card-status status-active">Open to Join</span>
-                    <span class="project-card-category">AI/ML</span>
-                </div>
-                <h3>Customer Support Chatbot</h3>
-                <p>AI-powered chatbot for 24/7 customer support with natural language processing.</p>
-                <div class="project-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;"></div>
+                    <div class="form-group">
+                        <label for="projectProgress">Initial Progress (%)</label>
+                        <input type="number" id="projectProgress" min="0" max="100" value="0" required>
                     </div>
-                </div>
-                <div class="project-card-info">
-                    <div><i class="fas fa-users"></i> 3 members</div>
-                    <div><i class="far fa-calendar-alt"></i> 4/1/2024</div>
-                </div>
-                <div class="project-card-footer">
-                    <div class="project-meta">
-                        <span>Python</span>
-                        <span>AI/ML</span>
-                        <span>NLP</span>
-                    </div>
-                    <a href="#" class="project-details-btn">View Details</a>
-                </div>
-            </div>
 
-            <!-- Project Card 6 (Example - Open) -->
-            <div class="project-card">
-                <div class="project-card-header">
-                    <span class="project-card-status status-active">Open to Join</span>
-                    <span class="project-card-category">Security</span>
-                </div>
-                <h3>Security Audit & Enhancement</h3>
-                <p>Comprehensive security review and implementation of enhanced security measures.</p>
-                <div class="project-progress">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%;"></div>
+                    <div class="form-group">
+                        <label for="projectStatus">Project Status</label>
+                        <select id="projectStatus" required>
+                            <option value="active">Active</option>
+                            <option value="open">Open to Join</option>
+                            <option value="completed">Completed</option>
+                        </select>
                     </div>
-                </div>
-                <div class="project-card-info">
-                    <div><i class="fas fa-users"></i> 2 members</div>
-                    <div><i class="far fa-calendar-alt"></i> 4/5/2024</div>
-                </div>
-                <div class="project-card-footer">
-                    <div class="project-meta">
-                        <span>Security</span>
-                        <span>Penetration Testing</span>
-                        <span>Cloud Security</span>
+
+                    <div class="form-group full-width">
+                        <label for="teamLeader">Team Leader (Editable)</label>
+                        <input type="text" id="teamLeader" readonly>
                     </div>
-                    <a href="#" class="project-details-btn">View Details</a>
+                    
+                    <div class="form-group full-width">
+                        <label>Team Members (Add one by one)</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="newMemberName" placeholder="Member Name">
+                            <input type="text" id="newMemberRole" placeholder="Role (e.g., Designer)">
+                            <button type="button" class="btn-secondary" id="add-member-btn" style="padding: 10px; width: 150px; flex-shrink: 0; border: none; background-color: #f3f4f6;">Add Member</button>
+                        </div>
+                        <ul id="team-members-list" class="team-members-list">
+                            </ul>
+                    </div>
+                    
                 </div>
-            </div>
+                
+                <div class="full-width" style="margin-top: 20px;">
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 12px;" id="save-project-btn">Save Project</button>
+                </div>
+            </form>
         </div>
     </div>
-</body>
+
+    </body>
 <footer class="footer">
     <div class="container">
         <div class="footer-top">
@@ -299,4 +357,360 @@
     </div>
 </footer>
 
+<script>
+    const projectsKey = 'hivemindProjects';
+    const loggedInUserKey = 'loggedInUser';
+    const selectedProjectKey = 'selectedProjectID';
+    
+    // --- Utility Functions ---
+
+    function getProjects() {
+        return JSON.parse(localStorage.getItem(projectsKey) || '[]');
+    }
+
+    function setProjects(projects) {
+        localStorage.setItem(projectsKey, JSON.stringify(projects));
+    }
+    
+    function getLoggedInUser() {
+        const userJSON = localStorage.getItem(loggedInUserKey);
+        return userJSON ? JSON.parse(userJSON) : null;
+    }
+
+    function generateUniqueId() {
+        return 'proj-' + Date.now() + Math.floor(Math.random() * 999);
+    }
+
+    // --- Modal Logic ---
+
+    const modal = document.getElementById('project-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const createProjectBtn = document.getElementById('create-project-btn');
+    const projectForm = document.getElementById('project-form');
+    const teamLeaderInput = document.getElementById('teamLeader');
+    const teamMembersList = document.getElementById('team-members-list');
+    const addMemberBtn = document.getElementById('add-member-btn');
+    
+    let currentTeamMembers = [];
+    let isEditing = false;
+    let currentProjectId = null;
+
+    function openModal(project = null) {
+        const user = getLoggedInUser();
+        if (!user) {
+            alert("You must be signed in to create a project.");
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Reset form and state
+        projectForm.reset();
+        currentTeamMembers = [];
+        teamMembersList.innerHTML = '';
+        isEditing = !!project;
+        currentProjectId = project ? project.id : generateUniqueId();
+        document.getElementById('modal-title').textContent = project ? 'Edit Project: ' + project.projectName : 'Create New Project';
+        document.getElementById('save-project-btn').textContent = project ? 'Save Changes' : 'Create Project';
+
+        if (project) {
+            // Populate form for editing
+            document.getElementById('projectName').value = project.projectName;
+            document.getElementById('projectCategory').value = project.projectCategory;
+            document.getElementById('startDate').value = project.startDate;
+            document.getElementById('expectedEndDate').value = project.expectedEndDate;
+            document.getElementById('projectDescription').value = project.projectDescription;
+            document.getElementById('gitHubLink').value = project.gitHubLink;
+            document.getElementById('techStack').value = project.techStack.join(', ');
+            document.getElementById('projectProgress').value = project.projectProgress;
+            document.getElementById('projectStatus').value = project.projectStatus;
+            
+            teamLeaderInput.value = project.teamLeader.name;
+            currentTeamMembers = project.teamMembers;
+
+        } else {
+            // Set default leader for new project
+            teamLeaderInput.value = user.name;
+            currentTeamMembers.push({ name: user.name, role: 'Team Leader', email: user.email });
+        }
+        
+        renderTeamMembers();
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    function renderTeamMembers() {
+        teamMembersList.innerHTML = '';
+        currentTeamMembers.forEach((member, index) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'team-member-item';
+            listItem.innerHTML = `
+                <span>${member.name} (${member.role})</span>
+                <button type="button" class="remove-member-btn" data-index="${index}">&times;</button>
+            `;
+            teamMembersList.appendChild(listItem);
+        });
+
+        // Add event listeners for remove buttons
+        teamMembersList.querySelectorAll('.remove-member-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                removeTeamMember(index);
+            });
+        });
+    }
+    
+    function addTeamMember() {
+        const name = document.getElementById('newMemberName').value.trim();
+        const role = document.getElementById('newMemberRole').value.trim() || 'Member';
+        
+        if (name && !currentTeamMembers.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+            currentTeamMembers.push({ name: name, role: role, email: '' }); // Email left empty for simplicity
+            document.getElementById('newMemberName').value = '';
+            document.getElementById('newMemberRole').value = '';
+            renderTeamMembers();
+        } else if (name) {
+             alert('Member name already added.');
+        } else {
+            alert('Please enter a member name.');
+        }
+    }
+
+    function removeTeamMember(index) {
+        // Prevent removing the team leader if they are the original creator
+        const user = getLoggedInUser();
+        const memberToRemove = currentTeamMembers[index];
+        
+        if (memberToRemove.name === user.name && memberToRemove.role === 'Team Leader') {
+            alert('The creator (Team Leader) cannot be removed from the project team.');
+            return;
+        }
+
+        currentTeamMembers.splice(index, 1);
+        renderTeamMembers();
+    }
+
+    // --- Project Card Rendering ---
+
+    function createProjectCard(project) {
+        const card = document.createElement('div');
+        card.className = 'project-card clickable';
+        card.setAttribute('data-id', project.id);
+
+        let statusClass = '';
+        let statusText = project.projectStatus;
+        if (project.projectStatus === 'completed') {
+            statusClass = 'status-completed';
+        } else if (project.projectStatus === 'active') {
+             statusClass = 'status-active';
+             statusText = 'active';
+        } else if (project.projectStatus === 'open') {
+             statusClass = 'status-active'; // Using active style for open
+             statusText = 'Open to Join';
+        }
+
+        const tagsHtml = project.techStack.map(tag => `<span>${tag}</span>`).join('');
+        
+        const progress = Math.min(100, Math.max(0, parseInt(project.projectProgress) || 0));
+
+        card.innerHTML = `
+            <div class="project-card-header">
+                <span class="project-card-status ${statusClass}">${statusText}</span>
+                <span class="project-card-category">${project.projectCategory}</span>
+            </div>
+            <h3>${project.projectName}</h3>
+            <p>${project.projectDescription.substring(0, 100)}...</p>
+            <div class="project-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progress}%;"></div>
+                </div>
+            </div>
+            <div class="project-card-info">
+                <div><i class="fas fa-users"></i> ${project.teamMembers.length} members</div>
+                <div><i class="far fa-calendar-alt"></i> ${project.expectedEndDate}</div>
+            </div>
+            <div class="project-card-footer">
+                <div class="project-meta">
+                    ${tagsHtml}
+                </div>
+                ${(getLoggedInUser() && getLoggedInUser().name === project.teamLeader.name) ? 
+                    `<button class="btn-secondary edit-project-btn" data-id="${project.id}" style="padding: 8px 12px; font-size: 0.9rem; margin-right: 10px; border: none; color: #6c63ff; background-color: #f3f4f6;">Edit</button>` : ''}
+                <a href="#" class="project-details-btn" data-id="${project.id}">View Details</a>
+            </div>
+        `;
+        
+        // Event listener for View Details (uses anchor link but is intercepted)
+        card.querySelector('.project-details-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Stop click from propagating to the whole card
+            const projectId = e.target.getAttribute('data-id');
+            sessionStorage.setItem(selectedProjectKey, projectId);
+            window.location.href = 'project-details.html';
+        });
+
+        // Event listener for Edit button
+        const editBtn = card.querySelector('.edit-project-btn');
+        if (editBtn) {
+            editBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // Stop click from propagating to the whole card
+                openModal(project);
+            });
+        }
+
+
+        return card;
+    }
+
+    function renderProjectGrid() {
+        const grid = document.getElementById('projects-grid');
+        grid.innerHTML = ''; // Clear existing (mock) content
+
+        const allProjects = getProjects();
+        const user = getLoggedInUser();
+        let myProjectsCount = 0;
+        let availableCount = 0;
+        let completedCount = 0;
+
+        allProjects.forEach(project => {
+            const card = createProjectCard(project);
+            grid.appendChild(card);
+            
+            // Update counts
+            if (user && project.teamMembers.some(member => member.email === user.email)) {
+                myProjectsCount++;
+            }
+            if (project.projectStatus === 'open') {
+                availableCount++;
+            }
+            if (project.projectStatus === 'completed') {
+                completedCount++;
+            }
+        });
+
+        // Update counts in the toolbar
+        document.getElementById('total-projects-count').textContent = allProjects.length;
+        document.getElementById('my-projects-count').textContent = myProjectsCount;
+        document.getElementById('available-projects-count').textContent = availableCount;
+        document.getElementById('completed-projects-count').textContent = completedCount;
+    }
+
+    // --- Initialization and Event Handlers ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Render initial projects
+        renderProjectGrid();
+        
+        // Update navbar for sign out if user is logged in
+        const user = getLoggedInUser();
+        const navButtons = document.getElementById('nav-buttons');
+        const signInLink = document.getElementById('sign-in-link');
+
+        if (user) {
+            if (signInLink) signInLink.remove(); 
+            
+            const signOutButton = document.createElement('button');
+            signOutButton.textContent = 'Sign Out';
+            signOutButton.className = 'btn-secondary'; 
+            signOutButton.style.padding = '8px 16px';
+            signOutButton.style.borderRadius = '8px';
+            signOutButton.style.fontWeight = '600';
+            signOutButton.style.color = '#ef4444';
+            signOutButton.style.border = '1px solid #ef4444';
+            signOutButton.style.cursor = 'pointer';
+
+            const getStartedLink = navButtons.querySelector('.btn-primary');
+            navButtons.insertBefore(signOutButton, getStartedLink);
+
+            signOutButton.addEventListener('click', function() {
+                localStorage.removeItem(loggedInUserKey);
+                window.location.href = 'login.html';
+            });
+        } else {
+             // If no user is logged in, hide create project button
+             createProjectBtn.style.display = 'none';
+        }
+    });
+
+    // Open Modal button handler
+    createProjectBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+    });
+
+    // Modal close handlers
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Add Team Member handler
+    addMemberBtn.addEventListener('click', addTeamMember);
+
+    // Project Form Submission
+    projectForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const user = getLoggedInUser();
+        if (!user) {
+            alert("Login session expired. Please sign in again.");
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const projectName = document.getElementById('projectName').value;
+        const projectCategory = document.getElementById('projectCategory').value;
+        const startDate = document.getElementById('startDate').value;
+        const expectedEndDate = document.getElementById('expectedEndDate').value;
+        const projectDescription = document.getElementById('projectDescription').value;
+        const gitHubLink = document.getElementById('gitHubLink').value;
+        const techStackString = document.getElementById('techStack').value;
+        const projectProgress = document.getElementById('projectProgress').value;
+        const projectStatus = document.getElementById('projectStatus').value;
+        const teamLeaderName = document.getElementById('teamLeader').value;
+
+        // Finalize project object
+        const newProject = {
+            id: currentProjectId,
+            projectName: projectName,
+            projectCategory: projectCategory,
+            startDate: startDate,
+            expectedEndDate: expectedEndDate,
+            projectDescription: projectDescription,
+            gitHubLink: gitHubLink,
+            techStack: techStackString.split(',').map(tag => tag.trim()).filter(tag => tag),
+            projectProgress: projectProgress,
+            projectStatus: projectStatus,
+            teamLeader: { 
+                name: teamLeaderName, 
+                email: currentTeamMembers.find(m => m.role === 'Team Leader')?.email || user.email // Use original creator email as fallback
+            },
+            teamMembers: currentTeamMembers.map(m => ({ ...m })), // Deep copy
+            projectID: `#${new Date().getFullYear()}-${currentProjectId.split('-')[1]}`
+        };
+
+        let projects = getProjects();
+
+        if (isEditing) {
+            // Find and update existing project
+            const index = projects.findIndex(p => p.id === currentProjectId);
+            if (index !== -1) {
+                projects[index] = newProject;
+                alert('Project updated successfully!');
+            }
+        } else {
+            // Add new project
+            projects.push(newProject);
+            alert('New project created successfully!');
+        }
+
+        setProjects(projects);
+        renderProjectGrid();
+        closeModal();
+    });
+</script>
 </html>
