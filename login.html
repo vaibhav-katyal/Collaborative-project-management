@@ -8,17 +8,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
+    <style>
+        /* ADDED: Simple styling for the error/success message box */
+        .message-box {
+            background-color: #fef2f2;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none; 
+        }
+        .message-box.success {
+            background-color: #ecfdf5;
+            border-color: #10b981;
+            color: #059669;
+        }
+    </style>
 </head>
 <body>
 
     <div class="login-container">
-        <!-- Login Form Panel -->
         <div class="login-form-panel">
             <div class="text-center">
                 <h2 class="form-title">Welcome Back</h2>
             </div>
             
-            <form action="user-profile.html">
+            <div id="message" class="message-box" role="alert"></div>
+
+            <form id="login-form">
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="email" id="email" name="email" placeholder="you@example.com" required>
@@ -38,7 +59,6 @@
             </p>
         </div>
         
-        <!-- Project Information Panel -->
         <div class="project-info-panel">
             <h1 class="project-title">HiveMind</h1>
             <p class="project-slogan">Collaborate. Lead. Succeed.</p>
@@ -48,6 +68,8 @@
             </p>
         </div>
     </div>
+
+    <script src="login.js"></script>
 
 </body>
 </html>
