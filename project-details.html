@@ -11,8 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="project-details.css">
     <link rel="stylesheet" href="footer.css">
+    <!-- Include Font Awesome for the user icon (fallback for text initials) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         /* ADDED: Simple loading/error state styling */
+        .navbar {
+            padding: 10px 0; /* Reduced vertical padding */
+        }
+        .nav-container {
+            align-items: center; /* Ensure vertical alignment */
+            min-height: 60px; /* Set a reasonable min height */
+        }
         .loading-state {
             text-align: center;
             padding: 50px;
@@ -43,10 +53,15 @@
                     <a href="index.html">Home</a>
                     <a href="projects.html">Projects</a>
                     <a href="community.html">Community</a>
+                    <!-- START: Dynamic Auth Container -->
                     <div class="nav-btns" id="nav-buttons">
-                        <a href="login.html" class="btn-secondary" id="sign-in-link">Sign In</a>
-                        <a href="projects.html" class="btn-primary">Get Started</a>
+                        <!-- This container holds the dynamic Sign In button OR the User Profile dropdown -->
+                        <div id="auth-ui-container">
+                            <!-- Placeholder for Sign In / Icon & Dropdown -->
+                        </div>
+                        <!-- Removed the static "Get Started" button here -->
                     </div>
+                    <!-- END: Dynamic Auth Container -->
                 </div>
             </div>
         </nav>
@@ -763,8 +778,8 @@
             if (user) {
                 if (signInLink) signInLink.remove();
 
-                const signOutButton = document.createElement('button');
-                signOutButton.textContent = 'Sign Out';
+                // const signOutButton = document.createElement('button');
+                // signOutButton.textContent = 'Sign Out';
                 signOutButton.className = 'btn-secondary';
                 signOutButton.style.padding = '8px 16px';
                 signOutButton.style.borderRadius = '8px';
@@ -790,6 +805,7 @@
             setupTaskControls(); // NEW: Setup task filtering/search
         });
     </script>
+    <script src="navbar.js"></script>
 </body>
 
 </html>
