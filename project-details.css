@@ -27,13 +27,16 @@ body {
     left: 0;
     width: 100%;
 }
+
 .navbar-spacer {
-    height: 80px; /* Match your navbar's actual height */
+    height: 80px;
+    /* Match your navbar's actual height */
     width: 100%;
     background: transparent;
     border: none;
     display: block;
 }
+
 .navbar .nav-container {
     display: flex;
     justify-content: space-between;
@@ -401,16 +404,21 @@ body {
 
 /* Technology Stack */
 
- .tech-stack-grid {
+.tech-stack-grid {
     display: flex;
-    justify-content: space-between; /* Distributes space evenly between columns */
-    gap: 2rem; /* Adds consistent spacing between columns */
-    padding: 1rem 0; /* Ensures even padding around the entire grid */
+    justify-content: space-between;
+    /* Distributes space evenly between columns */
+    gap: 2rem;
+    /* Adds consistent spacing between columns */
+    padding: 1rem 0;
+    /* Ensures even padding around the entire grid */
 }
 
 .tech-column {
-    flex: 1; /* Makes each column grow to take up equal space */
-    padding: 0 1rem; /* Adds padding inside each column for consistent spacing */
+    flex: 1;
+    /* Makes each column grow to take up equal space */
+    padding: 0 1rem;
+    /* Adds padding inside each column for consistent spacing */
 }
 
 .tech-column ul {
@@ -421,15 +429,19 @@ body {
 
 .tech-column li {
     display: flex;
-    align-items: center; /* Vertically aligns the icon and text */
-    gap: 0.5rem; /* Adds space between the icon and text */
-    margin-bottom: 0.5rem; /* Adds consistent vertical spacing between list items */
+    align-items: center;
+    /* Vertically aligns the icon and text */
+    gap: 0.5rem;
+    /* Adds space between the icon and text */
+    margin-bottom: 0.5rem;
+    /* Adds consistent vertical spacing between list items */
 }
 
 /* Responsive adjustment for mobile screens */
 @media (max-width: 768px) {
     .tech-stack-grid {
-        flex-direction: column; /* Stacks the columns vertically on smaller screens */
+        flex-direction: column;
+        /* Stacks the columns vertically on smaller screens */
     }
 }
 
@@ -542,27 +554,191 @@ body {
     }
 }
 
+.card-header-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tasks-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tasks-filter-select,
+.tasks-filter-search {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-inline .form-group {
+    flex: 1;
+}
+
+/* Task Card Styles */
+.task-card {
+    padding: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 150px 100px;
+    gap: 10px;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.task-card:hover {
+    background-color: #f9fafb;
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.task-meta {
+    font-size: 0.9em;
+    color: #6b7280;
+}
+
+.task-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.badge-priority-Urgent {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.badge-priority-High {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.badge-priority-Medium {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.badge-priority-Low {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.badge-difficulty-Hard {
+    background-color: #fecaca;
+    color: #b91c1c;
+}
+
+.badge-difficulty-Medium {
+    background-color: #fef9c3;
+    color: #a16207;
+}
+
+.badge-difficulty-Easy {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
 @media (max-width: 700px) {
-    .nav-container{
+    .nav-container {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
-    
+
 }
+
 @media (max-width: 557px) {
-    .nav-btns{
+    .nav-btns {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
     }
-    .btn-secondary{
+
+    .btn-secondary {
         font-size: 0.7rem;
     }
-    .btn-primary{
+
+    .btn-primary {
         display: none;
     }
-    
+
 }
 
 @media (max-width: 767px) {
