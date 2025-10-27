@@ -418,6 +418,163 @@ body {
     }
     
 }
+.modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-content.alert-content {
+            max-width: 400px; /* Make it smaller */
+            padding: 25px;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #6c63ff;
+            font-size: 1.8rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        
+        .project-selection-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-selection-list li {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .project-selection-list li:hover {
+            background-color: #f3f4f6;
+        }
+
+        .project-selection-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .project-selection-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .add-to-community-btn {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .added-to-community-btn {
+            background-color: #d1d5db;
+            color: #4b5563;
+            cursor: default;
+        }
+        
+        .project-card-footer .btn-contribute {
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        /* Styles for the Remove button */
+        .project-card .btn-remove {
+            background-color: #ef4444; /* Red */
+            color: white;
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* Styles for dynamic project cards */
+        .project-card[data-community="true"] .category {
+            background-color: #fce7f3; /* Light Pink */
+            color: #be185d; /* Dark Pink */
+        }
+        
+        /* NEW: Alert Modal Specific Styles */
+        #alert-icon-container .fas, #alert-icon-container .far {
+            font-size: 3rem;
+        }
+
+        .icon-error {
+            color: #ef4444; /* Red */
+        }
+
+        .icon-info {
+            color: #6c63ff; /* Primary Blue/Purple */
+        }
+
+        .icon-success {
+            color: #10b981; /* Green */
+        }
+
+        .btn-confirm {
+            background-color: #6c63ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-confirm:hover {
+             background-color: #5a51e6;
+        }
+
+        .btn-cancel {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            padding: 10px 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-cancel:hover {
+            background-color: #e5e7eb;
+        }
 
 @media (min-width: 1024px) {
     .projects-grid {

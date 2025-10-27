@@ -20,11 +20,10 @@
                     <a href="index.html">Home</a>
                     <a href="projects.html">Projects</a>
                     <a href="community.html">Community</a>
-                    <div class="nav-btns">
-                        <a href="login.html" class="btn-secondary">Sign In</a>
+                    <div class="nav-btns" id="nav-buttons">
+                        <a href="login.html" class="btn-secondary" id="sign-in-link">Sign In</a>
                         <a href="projects.html" class="btn-primary">Get Started</a>
                     </div>
-
                 </div>
             </div>
         </nav>
@@ -39,7 +38,7 @@
 
         <div class="stats-grid">
             <div class="stat-item">
-                <h3>247</h3>
+                <h3 id="completed-projects-stat">247</h3>
                 <p>Completed Projects</p>
             </div>
             <div class="stat-item">
@@ -51,7 +50,7 @@
                 <p>Countries Represented</p>
             </div>
             <div class="stat-item">
-                <h3>4.9</h3>
+                <h3 id="average-rating-stat">4.9</h3>
                 <p>Average Project Rating</p>
             </div>
         </div>
@@ -67,137 +66,52 @@
                 <a href="#" class="tab">Smart City</a>
             </div>
             <div class="toolbar-action">
-                <a href="#" class="btn-primary">
+                <button id="upload-project-btn" class="btn-primary">
                     <i class="fas fa-upload"></i> Upload Project
-                </a>
+                </button>
             </div>
         </div>
 
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="https://placehold.co/600x400/2563eb/ffffff?text=AI+Powered+Healthcare" alt="AI-Powered Healthcare Platform" class="project-card-image">
-                <div class="project-card-header">
-                    <div class="left-side">
-                        <span class="category">Healthcare</span>
-                        <div class="rating">
-                            <i class="fas fa-star"></i> 4.8
-                        </div>
-                    </div>
-                    <span class="like-button"><i class="fas fa-heart"></i></span>
-                </div>
-                <h3>AI-Powered Healthcare Platform</h3>
-                <p>Revolutionary platform connecting patients with healthcare providers using advanced AI algorithms.</p>
-                <div class="project-tags">
-                    <span class="project-tag">AI/ML</span>
-                    <span class="project-tag">Healthcare</span>
-                    <span class="project-tag">React</span>
-                    <span class="project-tag">+1</span>
-                </div>
-                <div class="project-card-footer">
-                    <div>
-                        <h4>Team Members</h4>
-                        <div class="team-members-avatars">
-                            <div class="team-member-avatar">DC</div>
-                            <div class="team-member-avatar">SM</div>
-                            <div class="team-member-avatar">RN</div>
-                        </div>
-                    </div>
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <i class="fas fa-thumbs-up"></i> 156
-                        </div>
-                        <div class="social-stat">
-                            <i class="fas fa-comments"></i> 28
-                        </div>
-                    </div>
-                    <span class="date">1/5/2024</span>
-                </div>
-                <a href="#" class="btn-contribute">Contribute in this project</a>
+        <div class="projects-grid" id="community-projects-grid">
             </div>
-
-            <div class="project-card">
-                <img src="https://placehold.co/600x400/10b981/ffffff?text=Sustainable+Energy+Management+System" alt="Sustainable Energy Management System" class="project-card-image">
-                <div class="project-card-header">
-                    <div class="left-side">
-                        <span class="category" style="background-color: #dcfce7; color: #16a34a;">GreenTech</span>
-                        <div class="rating">
-                            <i class="fas fa-star"></i> 4.5
-                        </div>
-                    </div>
-                    <span class="like-button"><i class="fas fa-heart"></i></span>
-                </div>
-                <h3>Sustainable Energy Management System</h3>
-                <p>Smart grid management system that optimizes renewable energy distribution and reduces carbon footprint for residential and commercial buildings.</p>
-                <div class="project-tags">
-                    <span class="project-tag">IoT</span>
-                    <span class="project-tag">Sustainability</span>
-                    <span class="project-tag">Data Analytics</span>
-                    <span class="project-tag">+1</span>
-                </div>
-                <div class="project-card-footer">
-                    <div>
-                        <h4>Team Members</h4>
-                        <div class="team-members-avatars">
-                            <div class="team-member-avatar" style="background-color: #d97706;">CT</div>
-                            <div class="team-member-avatar" style="background-color: #f59e0b;">PL</div>
-                            <div class="team-member-avatar" style="background-color: #ef4444;">PP</div>
-                        </div>
-                    </div>
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <i class="fas fa-thumbs-up"></i> 189
-                        </div>
-                        <div class="social-stat">
-                            <i class="fas fa-comments"></i> 32
-                        </div>
-                    </div>
-                    <span class="date">1/10/2024</span>
-                </div>
-                <a href="#" class="btn-contribute">Contribute in this project</a>
-            </div>
-
-            <div class="project-card">
-                <img src="https://placehold.co/600x400/9333ea/ffffff?text=Virtual+Reality+Education+Platform" alt="Virtual Reality Education Platform" class="project-card-image">
-                <div class="project-card-header">
-                    <div class="left-side">
-                        <span class="category" style="background-color: #f3e8ff; color: #7e22ce;">EdTech</span>
-                        <div class="rating">
-                            <i class="fas fa-star"></i> 4.9
-                        </div>
-                    </div>
-                    <span class="like-button"><i class="fas fa-heart"></i></span>
-                </div>
-                <h3>Virtual Reality Education Platform</h3>
-                <p>Immersive VR learning environment that transforms traditional education by providing interactive 3D experiences for students across various subjects.</p>
-                <div class="project-tags">
-                    <span class="project-tag">VR/AR</span>
-                    <span class="project-tag">Education</span>
-                    <span class="project-tag">Unity</span>
-                    <span class="project-tag">+1</span>
-                </div>
-                <div class="project-card-footer">
-                    <div>
-                        <h4>Team Members</h4>
-                        <div class="team-members-avatars">
-                            <div class="team-member-avatar" style="background-color: #9333ea;">RX</div>
-                            <div class="team-member-avatar" style="background-color: #a855f7;">TA</div>
-                            <div class="team-member-avatar" style="background-color: #c084fc;">MS</div>
-                        </div>
-                    </div>
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <i class="fas fa-thumbs-up"></i> 312
-                        </div>
-                        <div class="social-stat">
-                            <i class="fas fa-comments"></i> 67
-                        </div>
-                    </div>
-                    <span class="date">1/8/2024</span>
-                </div>
-                <a href="#" class="btn-contribute">Contribute in this project</a>
+    </div>
+    
+    <div id="project-selection-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="selection-modal-close-btn">&times;</span>
+            <h2>My Projects for Community Showcase</h2>
+            <ul id="my-projects-list" class="project-selection-list">
+                </ul>
+        </div>
+    </div>
+    
+    <div id="project-details-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="details-modal-close-btn">&times;</span>
+            <h2 id="details-project-name">Project Details</h2>
+            <p><strong class="text-secondary">Category:</strong> <span id="details-project-category"></span></p>
+            <p><strong class="text-secondary">Description:</strong> <span id="details-project-description"></span></p>
+            <p><strong class="text-secondary">Team Leader:</strong> <span id="details-team-leader"></span></p>
+            <p><strong class="text-secondary">Team Members:</strong> <span id="details-team-members"></span></p>
+            <p><strong class="text-secondary">Status:</strong> <span id="details-project-status"></span></p>
+            <div style="margin-top: 20px;">
+                <button class="btn-primary" id="request-contribute-btn" style="width: 100%; padding: 12px;">Request to Contribute</button>
             </div>
         </div>
     </div>
+    
+    <div id="alert-modal" class="modal-overlay">
+        <div class="modal-content alert-content">
+            <span class="modal-close" id="alert-modal-close-btn">&times;</span>
+            <div id="alert-icon-container" style="text-align: center; margin-bottom: 15px;">
+                </div>
+            <h2 id="alert-title" style="text-align: center; margin-bottom: 10px;"></h2>
+            <p id="alert-message" style="text-align: center; color: #4b5563; margin-bottom: 25px;"></p>
+            <div id="alert-actions" style="display: flex; justify-content: center; gap: 15px;">
+                </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
@@ -230,6 +144,7 @@
                         <ul>
                             <li><a href="#">Documentation</a></li>
                             <li><a href="#">Tutorials</a></li>
+                            <li><a href="#">Tutorials</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Help Center</a></li>
                             <li><a href="#">API Reference</a></li>
@@ -257,5 +172,7 @@
             </div>
         </div>
     </footer>
+    
+   <script src="community.js"></script>
 </body>
 </html>
