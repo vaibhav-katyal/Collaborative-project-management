@@ -74,6 +74,27 @@
     transform: translateY(-2px);
 }
 
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6c63ff;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.user-icon:hover {
+    background-color: #473aee;
+    transform: scale(1.1);
+}
+
 @media (max-width: 700px) {
     .nav-container{
         display: flex;
@@ -94,5 +115,4 @@
     .btn-primary{
         display: none;
     }
-    
 }

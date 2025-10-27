@@ -435,8 +435,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (user) {
         if (signInLink) signInLink.remove();
 
-        const signOutButton = document.createElement('button');
-        signOutButton.textContent = 'Sign Out';
+        // const signOutButton = document.createElement('button');
+        // signOutButton.textContent = 'Sign Out';
         signOutButton.className = 'btn-secondary';
         signOutButton.style.padding = '8px 16px';
         signOutButton.style.borderRadius = '8px';

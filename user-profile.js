@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
     signInLink.remove();
   }
 
-  const signOutButton = document.createElement("button");
-  signOutButton.textContent = "Sign Out";
+  // const signOutButton = document.createElement("button");
+  // signOutButton.textContent = "Sign Out";
   signOutButton.className = "btn-secondary"; // Reusing your secondary button styling
   signOutButton.style.backgroundColor = "#ef4444"; // Example red color for sign out
   signOutButton.style.color = "white";

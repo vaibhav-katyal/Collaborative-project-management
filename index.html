@@ -9,6 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Include Font Awesome for the user icon (fallback for text initials) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- TEMPORARY INLINE STYLE FIX for Navbar Height/Thickness -->
+    <style>
+        .navbar {
+            padding: 10px 0; /* Reduced vertical padding */
+        }
+        .nav-container {
+            align-items: center; /* Ensure vertical alignment */
+            min-height: 60px; /* Set a reasonable min height */
+        }
+    </style>
 </head>
 
 <body>
@@ -21,14 +34,18 @@
                     <a href="index.html">Home</a>
                     <a href="projects.html">Projects</a>
                     <a href="community.html">Community</a>
-                    <div class="nav-btns">
-                        <a href="login.html" class="btn-secondary">Sign In</a>
-                        <a href="projects.html" class="btn-primary">Get Started</a>
+                    <!-- START: Dynamic Auth Container -->
+                    <div class="nav-btns" id="nav-buttons">
+                        <!-- This container holds the dynamic Sign In button OR the User Profile dropdown -->
+                        <div id="auth-ui-container">
+                            <!-- Placeholder for Sign In / Icon & Dropdown -->
+                        </div>
+                        <!-- Removed the static "Get Started" button here -->
                     </div>
+                    <!-- END: Dynamic Auth Container -->
                 </div>
             </div>
         </nav>
-        <div class="navbar-spacer"></div>
     </header>
 
     <section class="hero-section">
@@ -130,7 +147,7 @@
                     <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                            <path d="M19 21v-2a4 4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                             <circle cx="12" cy="7" r="4" />
                         </svg>
                     </div>
@@ -445,6 +462,8 @@
         </div>
     </footer>
 
+    <!-- Link the new JavaScript for dynamic navbar logic -->
+    <script src="navbar.js"></script> 
 </body>
 
 </html>

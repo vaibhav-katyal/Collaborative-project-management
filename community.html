@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="community.css">
     <link rel="stylesheet" href="footer.css">
+    <!-- Include Font Awesome for the user icon (fallback for text initials) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- TEMPORARY INLINE STYLE FIX for Navbar Height/Thickness -->
+    <style>
+        .navbar {
+            padding: 10px 0; /* Reduced vertical padding */
+        }
+        .nav-container {
+            align-items: center; /* Ensure vertical alignment */
+            min-height: 60px; /* Set a reasonable min height */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,10 +33,15 @@
                     <a href="index.html">Home</a>
                     <a href="projects.html">Projects</a>
                     <a href="community.html">Community</a>
+                    <!-- START: Dynamic Auth Container -->
                     <div class="nav-btns" id="nav-buttons">
-                        <a href="login.html" class="btn-secondary" id="sign-in-link">Sign In</a>
-                        <a href="projects.html" class="btn-primary">Get Started</a>
+                        <!-- This container holds the dynamic Sign In button OR the User Profile dropdown -->
+                        <div id="auth-ui-container">
+                            <!-- Placeholder for Sign In / Icon & Dropdown -->
+                        </div>
+                        <!-- Removed the static "Get Started" button here -->
                     </div>
+                    <!-- END: Dynamic Auth Container -->
                 </div>
             </div>
         </nav>
@@ -174,5 +192,6 @@
     </footer>
     
    <script src="community.js"></script>
+   <script src="navbar.js"></script>
 </body>
 </html>
